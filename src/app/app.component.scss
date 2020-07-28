@@ -1,0 +1,21 @@
+.content {
+  max-width: 100%;
+  margin: auto;
+  padding-top: 25px;
+
+  @media (min-width: 1260px) {
+    padding-top: 150px;
+    max-width: 1260px;
+  }
+}
+
+.fab-container {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  width: 60px;
+  height: 60px;
+  button {
+    font-size: x-large;
+  }
+}

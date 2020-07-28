@@ -1,0 +1,9 @@
+<div class="content" role="main">
+  <app-table-filters [searchString]="filter.searchString" [role]="filter.role" (onFilterChange)="changeHandler($event)"></app-table-filters>
+  <app-users-table [dataSource]="users" (onEditClick)="onEditClick($event)" (onRemoveClick)="onRemoveClick($event)"></app-users-table>
+  <div class="fab-container">
+    <button mat-fab color="primary" aria-label="" (click)="onFabClick()">
+      +
+    </button>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "5f1ec45535e1a7d3c5d1e55c",
+    "firstName": "Hunter",
+    "lastName": "Whitaker",
+    "email": "hunter.whitaker@assurity.io",
+    "role": "Art manager"
+  },
+  {
+    "_id": "5f1ec4550791f9c0dadaf7d6",
+    "firstName": "Osborn",
+    "lastName": "Bennett",
+    "email": "osborn.bennett@exospeed.com",
+    "role": "Designer"
+  },
+  {
+    "_id": "5f1ec4551a8fbc11d09f49c1",
+    "firstName": "Beulah",
+    "lastName": "Fuller",
+    "email": "beulah.fuller@diginetic.net",
+    "role": "Art manager"
+  },
+  {
+    "_id": "5f1ec455c919787a2e56337a",
+    "firstName": "Saunders",
+    "lastName": "Matthews",
+    "email": "saunders.matthews@koffee.co.uk",
+    "role": "Art manager"
+  },
+  {
+    "_id": "5f1ec455438e88d11c689f6a",
+    "firstName": "Donaldson",
+    "lastName": "Frank",
+    "email": "donaldson.frank@tubalum.us",
+    "role": "Artist"
+  },
+  {
+    "_id": "5f1ec45521fe14f71d5be1e8",
+    "firstName": "Duran",
+    "lastName": "West",
+    "email": "duran.west@extragen.org",
+    "role": "Art manager"
+  },
+  {
+    "_id": "5f1ec455b2146bfe114a3f7a",
+    "firstName": "Knox",
+    "lastName": "Mcguire",
+    "email": "knox.mcguire@isoswitch.info",
+    "role": "Artist"
+  },
+  {
+    "_id": "5f1ec455d71ad76793e92e8d",
+    "firstName": "Reyes",
+    "lastName": "Conley",
+    "email": "reyes.conley@octocore.me",
+    "role": "Artist"
+  },
+  {
+    "_id": "5f1ec45504982e4b0dde8846",
+    "firstName": "Wise",
+    "lastName": "Carney",
+    "email": "wise.carney@digiprint.name",
+    "role": "Art manager"
+  },
+  {
+    "_id": "5f1ec45548036e9a89aa39af",
+    "firstName": "Myers",
+    "lastName": "Blair",
+    "email": "myers.blair@supportal.biz",
+    "role": "Artist"
+  }
+]

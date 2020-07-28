@@ -1,0 +1,14 @@
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Roles</mat-label>
+    <mat-select (selectionChange)="handleChange($event, 'role')" [value]="role">
+      <mat-option *ngFor="let r of roles" [value]="r">
+        {{r}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="search-field" >
+    <mat-label>Search</mat-label>
+    <input placeholder="Search" matInput type="text" (keyup)="handleChange($event, 'searchString')" [value]="searchString" width="200px">
+  </mat-form-field>
+</div>

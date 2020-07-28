@@ -1,0 +1,47 @@
+<div mat-dialog-content>
+    <form [formGroup]="userForm" class="inputs-container">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input minlength="3" type="text" matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input minlength="3" type="text" matInput formControlName="lastName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input minlength="3" type="email" matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let r of roles" [value]="r">
+            {{r}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+</div>
+<p>
+  Form Status: {{ userForm.getError() | json }}
+</p>
+<div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="userForm.errors">
+    Name is required.
+  </div>
+  <div *ngIf="userForm.errors">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="userForm.errors">
+    Name cannot be Bob.
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [disabled]="userForm.invalid" [mat-dialog-close]="userForm.value" cdkFocusInitial>{{successCaption}}</button>
+</div>
+
