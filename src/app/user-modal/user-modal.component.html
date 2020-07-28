@@ -23,7 +23,7 @@
 
     </form>
 </div>
-<p>
+<!-- <p>
   Form Status: {{ userForm.getError() | json }}
 </p>
 <div *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
@@ -39,7 +39,7 @@
     Name cannot be Bob.
   </div>
 
-</div>
+</div> -->
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button [disabled]="userForm.invalid" [mat-dialog-close]="userForm.value" cdkFocusInitial>{{successCaption}}</button>

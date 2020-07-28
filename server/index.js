@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = process.env.NODE_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const DB_URL = process.env.DB_URL || 'mongodb://localhost/test_db1212121'
 
 mongoose.connect(DB_URL, {useNewUrlParser: true});
