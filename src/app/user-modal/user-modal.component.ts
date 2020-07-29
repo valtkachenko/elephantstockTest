@@ -21,9 +21,9 @@ export class UserModalComponent implements OnInit {
   public user: User;
   public successCaption: string;
   public userForm = this.fb.group({
-    firstName: ['', Validators.pattern('^[a-zA-Z]+$')],
-    lastName: ['', Validators.pattern('^[a-zA-Z]+$')],
-    email: ['', Validators.email],
+    firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    email: ['', [Validators.required, Validators.email]],
     role: [this.roles[0], Validators.required],
   });
 
@@ -34,6 +34,7 @@ export class UserModalComponent implements OnInit {
   ) {
       this.user = (userToEdit ? userToEdit : new EmptyUser());
       this.successCaption = userToEdit ? 'Edit' : 'Create';
+
       this.userForm.patchValue(this.user);
   }
 

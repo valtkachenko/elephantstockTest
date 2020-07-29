@@ -3,7 +3,6 @@ const UserModel = require("../models/User.model")
 class UserService {
   getAll = (filter) => {
     const searchString = filter ? filter.searchString : '';
-    console.log(searchString);
     const role = filter ? filter.role : '';
     return UserModel.find(
       {

@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserModalComponent } from './user-modal/user-modal.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { UserModalComponent } from './user-modal/user-modal.component';
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
   ],

@@ -15,9 +15,9 @@ class UserController {
   create = async (req, res) => {
     try {
       const { value, error } = userValidationSchema.validate(req.body);
-      console.log(error);
+      console.log(error.toString());
       if (error) {
-        return res.status(400).send(error);
+        return res.status(400).send(error.details[0].message);
       }
 
       const isEmailExists = await usersService.exists({email: value.email});
@@ -45,9 +45,7 @@ class UserController {
       if (error) {
         return res.status(400).send(error.details[0].message);
       }
-      console.log(req.body);
       const isEmailExists = await usersService.exists({email: value.email, _id: {$ne: req.body._id}});
-      console.log(isEmailExists);
       if (isEmailExists) {
         return res.status(400).send('Email already exists');
       }
@@ -67,9 +65,7 @@ class UserController {
   }
   delete = async (req, res) => {
     try {
-
       const result = await usersService.delete(req.params.id);
-      console.log(result);
       res.send(result);
     } catch (error) {
       res.status(500).send(error.message);
