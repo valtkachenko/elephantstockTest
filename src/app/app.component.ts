@@ -91,7 +91,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (result) {
         this.userService.create(result)
         .subscribe(newUser => {
-          this.users.push(newUser);
+          this.users = this.users.concat(newUser);
         });
       }
     });

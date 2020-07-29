@@ -149,7 +149,7 @@ class AppComponent {
             if (result) {
                 this.userService.create(result)
                     .subscribe(newUser => {
-                    this.users.push(newUser);
+                    this.users = this.users.concat(newUser);
                 });
             }
         });

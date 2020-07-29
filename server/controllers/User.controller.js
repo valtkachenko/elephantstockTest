@@ -18,11 +18,12 @@ class UserController {
       const valid = true;
       if (valid) {
         const result = await usersService.create(req.body);
-        console.log(result);
+        return res.json(result);
+
       }
       // const data = await fs.promises.readFile(path.resolve(__dirname, '../users.json'));
       // const users = JSON.parse(data);
-      res.json({});
+      return res.sendStatus(400);
     } catch (error) {
       res.status(500).send(error.message);
     }
