@@ -31,6 +31,8 @@ class UserService {
   delete = (id) => {
     return UserModel.deleteOne({_id: id});
   }
+  exists = (args) => UserModel.exists(args);
+  find = args => UserModel.find(args);
 }
 
 module.exports = UserService;

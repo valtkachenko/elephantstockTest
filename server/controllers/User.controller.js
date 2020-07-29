@@ -1,13 +1,12 @@
-const UserService = require("../services/User.service")
+const UserService = require("../services/User.service");
+const userValidationSchema = require("../models/User.validation");
 
 const usersService = new UserService();
 class UserController {
   getAll = async (req, res) => {
     try {
-      // const data = await fs.promises.readFile(path.resolve(__dirname, '../users.json'));
       const { query } = req;
       const users = await usersService.getAll(query);
-      // const users = JSON.parse(data);
       res.json(users);
     } catch (error) {
       res.status(500).send(error.message);
@@ -15,31 +14,53 @@ class UserController {
   }
   create = async (req, res) => {
     try {
-      console.log(req.body);
-      const valid = true;
-      if (valid) {
-        const result = await usersService.create(req.body);
-        return res.json(result);
-
+      const { value, error } = userValidationSchema.validate(req.body);
+      console.log(error);
+      if (error) {
+        return res.status(400).send(error);
       }
-      // const data = await fs.promises.readFile(path.resolve(__dirname, '../users.json'));
-      // const users = JSON.parse(data);
-      return res.sendStatus(400);
+
+      const isEmailExists = await usersService.exists({email: value.email});
+      if (isEmailExists) {
+        return res.status(400).send('Email already exists');
+      }
+
+      if (value.role === 'Art manager') {
+        const isArtManagerExists = await userService.exists({role: value.role});
+        if (isArtManagerExists) {
+          return res.status(400).send('Only 1 Art manager can be in table');
+        }
+      }
+
+      const result = await usersService.create(value);
+      return res.json(result);
     } catch (error) {
       res.status(500).send(error.message);
     }
   }
   update = async (req, res) => {
     try {
-      console.log(req.body);
-      const valid = true;
-      if (valid) {
-        const result = await usersService.update(req.body);
-        console.log('Update result', result);
+      const { value, error } = userValidationSchema.validate(req.body);
+
+      if (error) {
+        return res.status(400).send(error.details[0].message);
       }
-      // const data = await fs.promises.readFile(path.resolve(__dirname, '../users.json'));
-      // const users = JSON.parse(data);
-      res.json(req.body);
+      console.log(req.body);
+      const isEmailExists = await usersService.exists({email: value.email, _id: {$ne: req.body._id}});
+      console.log(isEmailExists);
+      if (isEmailExists) {
+        return res.status(400).send('Email already exists');
+      }
+
+      if (value.role === 'Art manager') {
+        const isArtManagerExists = await usersService.exists({role: value.role, _id: {$ne: req.body._id}});
+        if (isArtManagerExists) {
+          return res.status(400).send('Only 1 Art manager can be in table');
+        }
+      }
+        const result = await usersService.update(req.body);
+
+      return  res.json(req.body);
     } catch (error) {
       res.status(500).send(error.message);
     }
