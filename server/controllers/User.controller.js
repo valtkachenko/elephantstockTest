@@ -15,7 +15,6 @@ class UserController {
   create = async (req, res) => {
     try {
       const { value, error } = userValidationSchema.validate(req.body);
-      console.log(error.toString());
       if (error) {
         return res.status(400).send(error.details[0].message);
       }
