@@ -2,7 +2,22 @@ const UserModel = require("../models/User.model")
 
 class UserService {
   getAll = (filter) => {
-    return UserModel.find();
+    const searchString = filter ? filter.searchString : '';
+    console.log(searchString);
+    const role = filter ? filter.role : '';
+    return UserModel.find(
+      {
+        ...(searchString && {
+          $or: [
+            { firstName: {$regex: searchString, $options: "i"}},
+            { lastName: {$regex: searchString, $options: "i"}},
+            { role: {$regex: searchString, $options: 'i'}},
+            { email: {$regex: searchString, $options: "i"}},
+          ]
+         }),
+        ...(role && {role})
+      }
+    );
   }
 
   update = ({ _id, ...user }) => {

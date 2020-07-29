@@ -6,5 +6,8 @@ const userSchema = new Schema({
   email: String,
   role: String,
 });
+
+userSchema.index({'$**': 'text'});
+
 const UserModel = model('User', userSchema);
 module.exports = UserModel;

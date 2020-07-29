@@ -5,7 +5,8 @@ class UserController {
   getAll = async (req, res) => {
     try {
       // const data = await fs.promises.readFile(path.resolve(__dirname, '../users.json'));
-      const users = await usersService.getAll();
+      const { query } = req;
+      const users = await usersService.getAll(query);
       // const users = JSON.parse(data);
       res.json(users);
     } catch (error) {
